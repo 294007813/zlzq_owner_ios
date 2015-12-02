@@ -1,0 +1,51 @@
+<style type="text/css">
+    .content{ font-size: 18px;text-align: center;margin-top:10px; }
+    .body1{
+
+        line-height:30px;
+        width:200px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+
+    }
+</style>
+<!--<div class="searchBar">-->
+    <!--<div class="searchBar-inner">-->
+
+    <!--</div>-->
+<!--</div>-->
+
+<div class="nav">
+    <a class="back" href="#"></a>
+    <h1>新闻动态</h1>
+</div>
+
+<div class="mask"></div>
+<%if(list!=""){%>
+<ul class="house-list">
+    <%_.each(list, function(v,i){ %>
+    <li data-id="<%=v.id%>">
+        <a>
+            <div class="img">
+                <img src="<%=v.avatar.url%>">
+            </div>
+            <div class="txt">
+                <p class="monthly"><%=v.title%>&nbsp;</p>
+                <!--<p class="body1"><%=v.body.substring(0,15)%>...&nbsp;&nbsp;</p>-->
+
+            </div>
+
+            <!--<div class="state">-->
+            <!--<p class="monthly"><em><%=v.state%></em></p>-->
+            <!--</div>-->
+        </a>
+    </li>
+    <%})%>
+
+</ul>
+<%}else{ %>
+<div class="content" >
+    <h2>对不起!暂无装修公司信息</h2>
+</div>
+<%}%>

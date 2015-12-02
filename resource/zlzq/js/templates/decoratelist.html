@@ -1,0 +1,100 @@
+<style type="text/css">
+    .content{ font-size: 18px;text-align: center;margin-top:10px; }
+    .body1{
+
+        line-height:30px;
+        width:200px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+
+
+    }
+     /*house-list{ padding-bottom: 30px;   background: #fff;}*/
+    /*.house-list h1{ padding: 0 10px; line-height: 44px; font-size: 16px; border-bottom: 1px solid #e4e4e4;}*/
+    /*.house-list ul{ margin: 0 0 0 8px;}*/
+    /*.house-list li{ border-bottom: 1px solid #e4e4e4; padding: 10px 0 10px 20px;margin:0 auto;}*/
+    /*.house-list li:last-child{ border-bottom: none;}*/
+    /*.house-list li > a{ display: block; padding: 8px 0; color: #000; overflow: hidden; *zoom:1;}*/
+    /*.house-list li .img{ position: relative; float: left; margin-right: 8px; width: 100px; height: 75px; }*/
+    /*.house-list li .btn {*/
+        /*position: absolute;*/
+        /*width: 80px;*/
+        /*line-height: 30px;*/
+        /*background: #ff6c10;*/
+        /*color: #fff;*/
+        /*top: 10px;*/
+        /*text-align: center;*/
+        /*border-radius:12px;*/
+        /*right: 10px;*/
+    /*}*/
+    /*/!*.house-list li .state{clear:both; position: relative; float: right; margin-right: 8px;}*!/*/
+    /*.house-list li .img img{ width: 100%; height: 100%; border: solid 1px #E5DDC2; border-radius: 3px;}*/
+    /*.house-list li .txt{ overflow: hidden; *zoom:1;}*/
+    /*.house-list li h3{ font-size: 18px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; line-height: 20px;color: #EAC447}*/
+    /*.house-list li .monthly em{ font-size: 18px;}*/
+    /*.txt{ padding-left: 10px; position: relative}*/
+    /*.txt p{line-height: 20px;color: #898a8b}*/
+    /*.house-list li .monthly{line-height: 30px;color: #ff6c10 }*/
+    /*.txt p.addr{ color: #898a8b;font-weight: 600;}*/
+</style>
+
+<!--<div class="searchBar">-->
+    <!--<div class="searchBar-inner">-->
+
+    <!--</div>-->
+<!--</div>-->
+
+<div class="nav">
+    <a class="back" href="#"></a>
+    <h1>装修案例</h1>
+</div>
+
+<div class="mask"></div>
+<%if(list!=""){%>
+<ul class="house-list">
+    <%_.each(list, function(v,i){ %>
+    <li data-id="<%=v.id%>">
+        <a>
+            <div class="img">
+                <img src="<%=v.avatar.url%>">
+            </div>
+            <div class="txt">
+                <p class="monthly"><%=v.title%>&nbsp;&nbsp;</p>
+                <!--<p class="body1"><%=v.body.substring(0,10)%>...&nbsp;&nbsp;</p>-->
+
+            </div>
+
+            <!--<div class="state">-->
+            <!--<p class="monthly"><em><%=v.state%></em></p>-->
+            <!--</div>-->
+        </a>
+    </li>
+    <%})%>
+
+</ul>
+<%}else{ %>
+<div class="content" >
+    <h2>对不起!暂无装修公司信息</h2>
+</div>
+<%}%>
+<!--<div class="bottom-bar">-->
+    <!--<ul>-->
+        <!--<li class="rent">-->
+            <!--<i class="b-icon r-icon "></i>-->
+            <!--<span>首页</span>-->
+        <!--</li>-->
+        <!--<li class="order">-->
+            <!--<i class="b-icon o-icon"></i>-->
+            <!--<span>我的订单</span>-->
+        <!--</li>-->
+        <!--&lt;!&ndash;<li class="schedule">-->
+            <!--<i class="b-icon c-icon"></i>-->
+            <!--<span>看房日程</span>-->
+        <!--</li>&ndash;&gt;-->
+        <!--<li class="mine">-->
+            <!--<i class="b-icon i-icon active"></i>-->
+            <!--<span>我的</span>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->

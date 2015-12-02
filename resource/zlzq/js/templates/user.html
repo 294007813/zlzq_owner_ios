@@ -1,0 +1,98 @@
+<div  class="hbg-box">
+    <div class="hbg-box-inner">
+        <div>
+            <%if(user.avatar.avatar.url!=null){%>
+            <img  class="avatar" src="<%=user.avatar.avatar.url%>">
+            <%}else{%>
+            <img  class="avatar" src="./resource/zlzq/images/myheader.png">
+            <%}%>
+        </div>
+        <div class="info">
+           <h2><%=user.nick_name%> &nbsp;<b></b></h2>
+            <p><%=user.cell%> </p>
+            <p style="font-size: 10px;">上海&nbsp;</p>
+        </div>
+        <i class="arrow"></i>
+    </div>
+   <img src="resource/zlzq/images/hbg.png" style="width: 100%;display: none" />
+</div>
+<div style="margin-top: 90px">
+</div>
+
+<div style="margin-top: 20px">
+    <ul class="opt-list">
+        <li class="sign">每日签到<i class="arrow"></i></li>
+    </ul>
+</div>
+
+<div style="margin-top: 20px">
+    <ul class="opt-list">
+        <li class="invite">输入邀请码<i class="arrow"></i></li>
+    </ul>
+</div>
+<div style="margin-top: 20px">
+    <ul class="opt-list">
+        <li class="to_send">发送邀请码<i class="arrow"></i></li>
+    </ul>
+</div>
+<div style="margin-top: 20px">
+    <ul class="opt-list">
+        <li class="to_apply">申请抵扣<em class="applybtn" style="float: right;color: #ff0000;margin-right: 10px;"><%=user.state%></em></li>
+    </ul>
+</div>
+
+<div class="ver" style="margin-top: 20px">
+    <ul class="opt-list">
+        <li >程序版本<em id="ver" style="float: right;margin-right: 10px;">V<%=ver%></em></li>
+    </ul>
+</div>
+
+<div style="text-align: center;margin-top: 20px; background: #fff;line-height: 40px;border-top: solid 1px #EEE;" class="exit">
+    退出程序
+</div>
+
+<div  style="margin-top: 60px">
+</div>
+
+<div class="cd-popup" id="ask-update" role="alert">
+    <div class="cd-popup-container">
+        <p style="">发现新版本,需要升级吗?</p>
+        <ul class="cd-buttons">
+            <li id="yes-update">
+                <a href="#0">升级</a>
+            </li>
+            <li class="cd-no">
+                <a href="#0">取消</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="cd-popup" id="ask-exit" role="alert">
+    <div class="cd-popup-container">
+        <p style="">确定退出?</p>
+        <ul class="cd-buttons">
+            <li id="yes-exit">
+                <a href="#0">退出</a>
+            </li>
+            <li class="cd-no">
+                <a href="#0">取消</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ul class="tab1">
+    <li>
+        <i class="icon icon-home"></i>
+        <span>首页</span>
+    </li>
+    <li>
+        <i class="icon icon-note"></i>
+        <span>约看日程</span>
+    </li>
+    <li class="on">
+        <i class="icon icon-person"></i>
+        <span>我的</span>
+    </li>
+</ul>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>房源详情</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="stylesheet" type="text/css" href="./resource/hih5/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="./resource/zlzq/css/zlzq.css"/>
+	<link rel="stylesheet" type="text/css" href="./resource/zlzq/css/custom.css"/>
+	<link rel="stylesheet" type="text/css" href="./resource/zlzq/css/zlzq_owner.css" />
+</head>
+<body>
+<div id="main" style="padding-top:0;">
+	<div class="main-frame">
+		<div class="main-viewport">
+		</div>
+		<div class="main-state"></div>
+	</div>
+</div>
+
+<div id="footer"></div>
+<div id="loading">
+	<div class="container">
+		<div class="std_loading"></div>
+		LOADING
+	</div>
+
+	<div class="loading_bg"></div>
+</div>
+
+<script type="text/lizard-config">
+     {
+     "url_schema": "houses_change",
+     "viewName":"houses_change",
+     "view":{
+        "viewport": Lizard.T("viewportTmpl")
+     },
+     "controller": "resource/zlzq/js/controllers/houses_change.js"
+      }
+</script>
+<script id="viewportTmpl" type="text/lizard-template">
+	<div class="nav">
+		<a class="back" href="#"></a>
+		<h1>房源修改</h1>
+		<a class="next" href="#"></a>
+	</div>
+
+	<div class="container greybg">
+		<form>
+			<dl class="form-dl">
+				<dt>标题</dt>
+				<dd>
+					<textarea id="title" placeholder="请填写标题(30字以内)" ></textarea>
+				</dd>
+			</dl>
+
+			<ul class="form-list">
+				<li>
+					<label for="neighbourhood">小区名称</label>
+					<input type="text" class="form-input" id="neighbourhood" placeholder="请填写小区名称" value="康桥一村" />
+				</li>
+				<li>
+					<label for="address">详细地址</label>
+					<input type="text" class="form-input" id="address" value="秀沿路404号A栋"/>
+				</li>
+				<li>
+					<label for="rent">租金</label>
+					<input type="number" class="form-input" id="rent" value="5800"/>
+					<div class="unit">元/月</div>
+				</li>
+				<li>
+					<label for="square">面积</label>
+					<input type="number" class="form-input" id="square" value="120"/>
+					<div class="unit">m<sup>2</sup></div>
+				</li>
+				<li>
+					<label for="layer">楼层</label>
+					<input type="number" class="form-input" id="layer" value="3"/>
+					<div class="unit">F</div>
+				</li>
+				<li>
+					<label for="layerall">楼层总高</label>
+					<input type="number" class="form-input" id="layerall" value="10"/>
+					<div class="unit">F</div>
+				</li>
+			</ul>
+			<ul class="form-list">
+				<li class="form-select" id="area-select">
+					<label>区域</label>
+					<input type="text" class="form-input" id="area-show" readonly="" value="" />
+					<span>></span>
+					<input type="hidden" id="area" />
+				</li>
+				<li class="form-select" id="housetype-select">
+					<label>户型</label>
+					<input type="text" class="form-input" id="housetype-show" value="一室一厅" />
+					<span>></span>
+					<input type="hidden" id="housetype" />
+				</li>
+				<li class="form-select" id="housing-select">
+					<label>装修</label>
+					<input type="text" class="form-input" id="housing-show" value="简装" />
+					<span>></span>
+					<input type="hidden" id="housing" />
+				</li>
+				<li class="form-select" id="faceto-select">
+					<label>朝向</label>
+					<input type="text" class="form-input" id="faceto-show" value="东南" />
+					<span>></span>
+					<input type="hidden" id="faceto" />
+				</li>
+				<li class="form-select" id="housingtime-select">
+					<label>装修年限</label>
+					<input type="text" class="form-input" id="housingtime-show" value="5年" />
+					<span>></span>
+					<input type="hidden" id="housingtime" />
+				</li>
+			</ul>
+			<ul class="form-list">
+				<li class="form-select" id="rentdeadline-select">
+					<label>租赁到期</label>
+					<input type="text" class="form-input" id="rentdeadline-show" value="2015/10/10至2016/12/12" />
+					<span>></span>
+					<input type="hidden" id="rentdeadline" />
+				</li>
+			</ul>
+
+			<dl class="form-dl">
+				<dt>家具</dt>
+				<dd>
+					<ul class="icon-radiolist">
+						<li>
+							<input type="checkbox" name="furniture" class="hide" id="furniture-1" checked="" />
+							<label for="furniture-1">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-chair"></i>
+								<span>椅子</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="furniture" class="hide" id="furniture-2" />
+							<label for="furniture-2">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-teapoy"></i>
+								<span>茶几</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="furniture" class="hide" id="furniture-3" />
+							<label for="furniture-3">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-sofa"></i>
+								<span>沙发</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="furniture" class="hide" id="furniture-4" />
+							<label for="furniture-4">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-bed"></i>
+								<span>床</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="furniture" class="hide" id="furniture-5" />
+							<label for="furniture-5">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-wardboard"></i>
+								<span>衣柜</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="furniture" class="hide" id="furniture-6" />
+							<label for="furniture-6">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-table"></i>
+								<span>餐桌</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="furniture" class="hide" id="furniture-7" />
+							<label for="furniture-7">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-tvbench"></i>
+								<span>电视柜</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="furniture" class="hide" id="furniture-8" />
+							<label for="furniture-8">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-bookcase"></i>
+								<span>书柜</span>
+							</label>
+						</li>
+					</ul>
+				</dd>
+			</dl>
+			<dl class="form-dl">
+				<dt>家电</dt>
+				<dd>
+					<ul class="icon-radiolist">
+						<li>
+							<input type="checkbox" name="electronic" class="hide" id="electronic-1" checked="" />
+							<label for="electronic-1">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-tv"></i>
+								<span>电视</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="electronic" class="hide" id="electronic-2" />
+							<label for="electronic-2">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-heater"></i>
+								<span>热水器</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="electronic" class="hide" id="electronic-3" />
+							<label for="electronic-3">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-refriger"></i>
+								<span>冰箱</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="electronic" class="hide" id="electronic-4" />
+							<label for="electronic-4">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-aircon"></i>
+								<span>空调</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="electronic" class="hide" id="electronic-5" />
+							<label for="electronic-5">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-microwave"></i>
+								<span>微波炉</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="electronic" class="hide" id="electronic-6" />
+							<label for="electronic-6">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-washer"></i>
+								<span>洗衣机</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="electronic" class="hide" id="electronic-7" />
+							<label for="electronic-7">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-fan"></i>
+								<span>电风扇</span>
+							</label>
+						</li>
+						<li>
+							<input type="checkbox" name="electronic" class="hide" id="electronic-8" />
+							<label for="electronic-8">
+								<i class="icon icon-radio"></i>
+								<i class="icon icon-img icon-computer"></i>
+								<span>电脑</span>
+							</label>
+						</li>
+					</ul>
+				</dd>
+			</dl>
+			<dl class="form-dl">
+				<dt>上传照片</dt>
+				<dd class="pic-input">
+					<div class="pic-block">
+						<label class="pic-label icon" for="pic1">
+							<img src="./pic/upimg1.png"/>
+						</label>
+						<label class="pic-label icon" for="pic2">
+							<img src="./pic/upimg1.png"/>
+						</label>
+						<label class="pic-label icon" for="pic3">
+							<img src=""/>
+						</label>
+					</div>
+					<input class="hide" id="pic1" type="file" />
+					<input class="hide" id="pic2" type="file" />
+					<input class="hide" id="pic3" type="file" />
+					<p>有图有真相，能更快将房子租出去哦</p>
+				</dd>
+			</dl>
+			<dl class="form-dl">
+				<dt>标签选择</dt>
+				<dd>
+					<ul class="label-list">
+						<li>
+							<input type="checkbox" name="label" class="hide" id="label1" checked="">
+							<label for="label1">交通方便</label>
+						</li>
+						<li>
+							<input type="checkbox" name="label" class="hide" id="label2">
+							<label for="label2">带花园</label>
+						</li>
+						<li>
+							<input type="checkbox" name="label" class="hide" id="label3">
+							<label for="label3">地铁</label>
+						</li>
+						<li>
+							<input type="checkbox" name="label" class="hide" id="label4">
+							<label for="label4">电梯</label>
+						</li>
+						<li>
+							<input type="checkbox" name="label" class="hide" id="label5">
+							<label for="label5">别墅</label>
+						</li>
+						<li>
+							<input type="checkbox" name="label" class="hide" id="label6">
+							<label for="label6">唯一住房</label>
+						</li>
+					</ul>
+				</dd>
+			</dl>
+			<div class="submitArea">
+				<input type="button" class="submitBtn" value="修改房源" />
+			</div>
+		</form>
+	</div>
+	<div class="pic-box" >
+		<div class="pmask" ></div>
+		<div  class="menu" >
+			<ul>
+				<li id="camera">拍照</li>
+				<li id="choose-box">从相册中选择</li>
+				<li class="cancel">取消</li>
+			</ul>
+		</div>
+	</div>
+	<ul class="tab1">
+		<li>
+			<i class="icon icon-home"></i>
+			<span>首页</span>
+		</li>
+		<li>
+			<i class="icon icon-note"></i>
+			<span>约看日程</span>
+		</li>
+		<li>
+			<i class="icon icon-person"></i>
+			<span>我的</span>
+		</li>
+	</ul>
+</script>
+</body>
+<script type="text/javascript" src="resource/hih5/js/lib/hih5.core.js" pdconfig="resource/zlzq/js/zlzqconfig.js" lizardconfig="isHideAllLoading:true"></script>
+</html>

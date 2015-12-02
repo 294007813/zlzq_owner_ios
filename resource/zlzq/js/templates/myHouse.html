@@ -1,0 +1,56 @@
+<div class="nav">
+    <a class="back" href="#"></a>
+    <h1>我的房源</h1>
+</div>
+<div class="container">
+    <div class="house-list">
+        <%if(realties!=""){%>
+        <%_.each(realties, function(v,i){ %>
+        <a href="#" class="house-info" data-id="<%=v.id%>">
+            <%if(v.avatar!=null){%>
+            <img src="<%=v.avatar%>" />
+            <%}else{%>
+            <img src="./pic/show1.png" />
+            <%}%>
+            <div class="info-block">
+                <%if(v.title!=null){%>
+                <p class="info-title"><%=v.title%></p>
+                <%}%>
+                <p class="info-data">
+                    <%if(v.room!=null){%>
+                    <%=v.room%>室<%=v.hall%>厅<%=v.wash%>卫&nbsp;
+                    <%}%>
+                    <%if(v.area!=null){%>
+                    |&nbsp;<%=v.area%>m<sup>2</sup>&nbsp;
+                    <%}%>
+                    <%if(v.floor!=null){%>
+                    |&nbsp;<%=v.floor%>/<%=v.total_height%>F
+                    <%}%>
+                </p>
+                <%if(v.price!=null){%>
+                <p class="info-price"><%=v.price%><span class="unit">元/月</span></p>
+                <%}%>
+            </div>
+        </a>
+        <%})%>
+        <%}else{%>
+        <p class="nothing" style="text-align:center;padding-top: 10px;color: #ff6c10;font-size: 20px">您还未发布房源,点击发布</p>
+        <%}%>
+    </div>
+</div>
+<div style="margin-top: 30px;background-color: #f9f8f8;"></div>
+
+<ul class="tab1">
+    <li>
+        <i class="icon icon-home"></i>
+        <span>首页</span>
+    </li>
+    <li>
+        <i class="icon icon-note"></i>
+        <span>约看日程</span>
+    </li>
+    <li>
+        <i class="icon icon-person"></i>
+        <span>我的</span>
+    </li>
+</ul>
