@@ -2075,3 +2075,16 @@ background-position: 0 -410px;
   }
 }
 /*以上是弹出确认框*/
+
+/*ios版选择照片*/
+#choose-box{
+  position: relative;
+}
+#choose-box  .photos {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}

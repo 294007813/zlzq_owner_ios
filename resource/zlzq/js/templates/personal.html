@@ -1,40 +1,4 @@
-<!--<script type="text/javascript">
-    $(document).bind('deviceready',function(){
-        $('#camera').bind('touchstart',function(){
-            alert("-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;");
-            navigator.camera.getPicture(function(data){
-                $('#picture').attr('src','data:image/jpeg;base64,'+data);
 
-            },function(error){
-                console.log('Error');
-            },{
-                destinationType:Camera.DestinationType.DATA_URL,
-                sourceType:Camera.PictureSourceType.CAMERA,
-                allowEdit:false,
-                targetWidth:135,
-                targetHeight:200
-            });
-        });
-
-        $('#choose-box').bind('touchstart',function(){
-            navigator.camera.getPicture(function(data){
-                $('#picture').attr('src','data:image/jpeg;base64,'+data);
-
-            },function(error){
-                console.log('Error');
-            },{
-                destinationType:Camera.DestinationType.DATA_URL,
-                sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
-                allowEdit:false,
-                targetWidth:135,
-                targetHeight:200,
-                mediaType:Camera.MediaType.PICTURE
-            });
-        });
-
-
-    });
-</script>-->
 <div class="personal">
     <div class="info-box">
      <div class="avatar-box">
@@ -114,12 +78,14 @@
         </ul>
     </div>
 
-    <div class="pic-box1" style="display: none">
-        <div style="position: fixed;top: 0;bottom: 0;   background-color: rgba(0, 0, 0, 0.7);  width: 10"></div>
+    <div class="pic-box" style="display: none">
+        <div style="position: fixed;top: 0;bottom: 0;   background-color: rgba(0, 0, 0, 0.7);  width: 100%"></div>
         <div  class="menu" >
             <ul>
-                <li id="camera">拍照</li>
-                <li id="choose-box">从相册中选择</li>
+                <li id="camera" style="display:none">拍照</li>
+                <li id="choose-box">从相册中选择
+                    <input type="file"  accept="image/*" class="photos nofastclick"/>
+                </li>
                 <li class="cancel">取消</li>
             </ul>
         </div>

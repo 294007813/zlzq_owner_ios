@@ -15,7 +15,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupS
             "click #housingtime-show": "showHousingTimeScroller",
             "click #faceto-show": "showDirectionScroller",
             "click #rentdeadline-select": "showDateScroller",
-            "click #choose-box": "readFile",//选择相册
+            "change .photos": "readFile",//选择相册
             "click #camera": "camera",//拍照,
             "click .submitBtn": "submitHouseInfo",
             "click .cd-popup,.cd-no":"toCancel",

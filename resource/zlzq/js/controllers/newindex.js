@@ -48,6 +48,10 @@ define(['BaseView', "cUIInputClear","cUIImageSlider","text!TplNewIndex", "Model"
         },
 
         onShow: function () {
+            var height=$(window).height();
+            if(height<615){
+                self.$(".slide-block ").css("height","320px");
+            }
             self.hideLoading();
             self.$el.html(TplNewIndex);
 
@@ -72,15 +76,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider","text!TplNewIndex", "Model"
             self.houseSlider.show();
 
 
-            var height=$(window).height();
-            ////alert(height);
-            if(height<615){
-                self.$(".slide-block ").css("height","350px");
-                self.$(".slide-block img").css("height","350px");
-            //}else{
-            //    self.$(".slide-block ").css("height","415px");
-            //    self.$(".slide-block img").css("height","415px");
-            }
+
 
             self.hideLoading();
         }
