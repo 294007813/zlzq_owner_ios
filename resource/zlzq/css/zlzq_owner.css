@@ -18,6 +18,7 @@ body{overflow-x:hidden;overflow-y:auto;}
 	overflow: hidden;
 	background-color: #FF6C10;
 	z-index: 3;
+	border-top: 20px solid white;
 }
 .nav a{
 	position: absolute;

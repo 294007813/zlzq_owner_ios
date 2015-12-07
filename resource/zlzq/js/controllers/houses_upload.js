@@ -71,10 +71,24 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupS
         },
         //点击选择相册
         readFile: function (e) {
-            self.iframeContent.contentWindow.getPictureFromPhoto(function (data) {
-                $(".pic-block").prepend('<label class="pic-label icon" ><label class="delico new" ></label> <img class="housepic" src="data:image/jpeg;base64,' + data + '"/> </label>');
-                self.hidePicType();
-            })
+			
+			var self=this,
+                file = e.currentTarget.files[0],
+				target=e.currentTarget;
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e) {
+        
+				
+		     $(".pic-block").prepend('<label class="pic-label icon" ><label class="delico new" ></label> <img class="housepic" src="data:image/jpeg;base64,' + this.result.substring(this.result.lastIndexOf(";")+8) + '"/> </label>');
+
+				 self.hidePicType();
+				 target.parentNode.appendChild(target.cloneNode());
+				 target.parentNode.removeChild(target);
+            }
+			
+			
+          
         },
         toCancel: function(){
             self.$el.find(".cd-popup").removeClass("is-visible");
@@ -632,7 +646,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupS
                     this.destroy()
                 }
             });
-            //self.iframeContent = 1;
+            self.iframeContent = 1;
             if (!self.iframeContent) {
                 var iframe = document.createElement("iframe");
                 iframe.width = "100%";
