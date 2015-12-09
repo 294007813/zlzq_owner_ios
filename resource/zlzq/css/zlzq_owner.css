@@ -149,9 +149,9 @@ body{overflow-x:hidden;overflow-y:auto;}
 	height: 415px;
 }
 
-.slide-block img{
-	height: 415px;
-}
+/*.slide-block img{*/
+	/*height: 415px;*/
+/*}*/
 
 /*.slide-block .slide-img{*/
 	/*position: relative;*/
