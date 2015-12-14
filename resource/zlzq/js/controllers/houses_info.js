@@ -1,4 +1,4 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","text!TplHouseInfo"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplHouseInfo) {
+define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","text!TplHouseInfo","cImageZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,TplHouseInfo,cImageZoom) {
     var self;
     var View = BaseView.extend({
         ViewName: 'houses_info',
@@ -95,7 +95,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","text!Tpl
             var pic=[];
             pic=data.realty.media;
             for(i=0;i<data.realty.media.length;i++){
-                $(".pic-block").append('<label class="pic-label icon"><img src="'+pic[i].avatar+'"/></label>');
+                $(".pic-block").append('<label class="pic-label icon"><img class="fullimg" src="'+pic[i].avatar+'"/></label>');
                 //alert("src:"+pic[i].avatar);
             }
         },
@@ -110,7 +110,9 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","text!Tpl
                 self.putDistricts(data);
                 self.$el.html(_.template(TplHouseInfo)({realties: data.realty,area:self.area}));
                 self.gitPic(data);
+                $(".fullimg").fancyzoom();
             })
+
             self.hideLoading();
         },
 

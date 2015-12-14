@@ -72,16 +72,19 @@ define(['BaseView', "cUIInputClear","cUIImageSlider","text!TplNewIndex", "Model"
             self.houseSlider.show();
 
             var height=$(window).height();
-            ////alert(height);
             if(height<615){
+                self.$(".slide-block").css("height","350px");
+                self.$(".slide-block img").css("height","350px");
+                self.$(".cui-navContainer").css("top","300px");
+                self.$(".cm-slide").css("height","350px");
+            }
+            if(height<=480){
                 self.$(".slide-block").css("height","260px");
                 self.$(".slide-block img").css("height","260px");
                 self.$(".cui-navContainer").css("top","240px");
                 self.$(".cm-slide").css("height","260px");
-                //}else{
-                //    self.$(".slide-block ").css("height","415px");
-                //    self.$(".slide-block img").css("height","415px");
             }
+
 
 
             self.hideLoading();

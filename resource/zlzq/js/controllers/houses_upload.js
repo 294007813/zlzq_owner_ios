@@ -1,4 +1,4 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupSelect","text!TplHouseUpload"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,UIGroupSelect,TplHouseUpload) {
+define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupSelect","text!TplHouseUpload","cImageZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,UIGroupSelect,TplHouseUpload,cImageZoom) {
     var self;
     var View = BaseView.extend({
         //url: "http://zlzq.easybird.cn",
@@ -85,6 +85,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupS
 				 self.hidePicType();
 				 target.parentNode.appendChild(target.cloneNode());
 				 target.parentNode.removeChild(target);
+                $(".housepic").fancyzoom();
+                $(".fullimg").fancyzoom();
             }
 			
 			
@@ -672,7 +674,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupS
             } else {
                 this.hideLoading();
             }
-
+            $(".housepic").fancyzoom();
+            $(".fullimg").fancyzoom();
 
         },
 
@@ -682,9 +685,11 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupS
             pic=data.realty.media;
             //alert("length:"+pic.length);
             for(i=0;i<data.realty.media.length;i++){
-                $(".pic-block").append('<label class="pic-label icon"><label class="delico saved" ></label><img src="'+pic[i].avatar+'" picid="'+pic[i].medium_id+'"/></label>');
+                $(".pic-block").append('<label class="pic-label icon"><label class="delico saved" ></label><img class="fullimg" src="'+pic[i].avatar+'" picid="'+pic[i].medium_id+'"/></label>');
                 //alert("src:"+pic[i].avatar);
             }
+            $(".housepic").fancyzoom();
+            $(".fullimg").fancyzoom();
         },
 
         //房源图片上传
