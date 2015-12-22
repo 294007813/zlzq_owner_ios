@@ -79,18 +79,39 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupS
             reader.readAsDataURL(file);
             reader.onload = function(e) {
         
-				
-		     $(".pic-block").prepend('<label class="pic-label icon" ><label class="delico new" ></label> <img class="housepic" src="data:image/jpeg;base64,' + this.result.substring(this.result.lastIndexOf(";")+8) + '"/> </label>');
+			
+              self.imgScale(this.result,0.1,function(src){
+                   
+                     $(".pic-block").prepend('<label class="pic-label icon" ><label class="delico new" ></label> <img class="housepic" src="data:image/jpeg;base64,' + src.substring(src.lastIndexOf(";")+8) + '"/> </label>');
 
-				 self.hidePicType();
-				 target.parentNode.appendChild(target.cloneNode());
-				 target.parentNode.removeChild(target);
-                $(".housepic").fancyzoom();
-                $(".fullimg").fancyzoom();
+                     self.hidePicType();
+                     target.parentNode.appendChild(target.cloneNode());
+                     target.parentNode.removeChild(target);
+                    $(".housepic").fancyzoom();
+                    $(".fullimg").fancyzoom();
+                })
+
+		  
             }
 			
 			
           
+        },
+
+         imgScale: function  (src,scale,callback) {
+            if (!src) return callback(false)
+            var _canvas = document.getElementById('g_canvas'),
+                 type=src.substring(0,src.lastIndexOf(";")).replace("data:","");
+            var tImg = new Image();
+            tImg.onload = function(){
+                var _context = _canvas.getContext('2d');
+                _canvas.width = tImg.naturalWidth;
+                _canvas.height = tImg.naturalHeight;
+                _context.drawImage(tImg,0,0);
+                src = _canvas.toDataURL(type,scale);
+               callback(src);
+            };
+            tImg.src = src
         },
         toCancel: function(){
             self.$el.find(".cd-popup").removeClass("is-visible");
@@ -676,6 +697,8 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupS
             }
             $(".housepic").fancyzoom();
             $(".fullimg").fancyzoom();
+
+             $('body').append($('<canvas id="g_canvas" style="display: none;"></canvas>'));
 
         },
 

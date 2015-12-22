@@ -39,13 +39,30 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             var self=this,
                 file = e.currentTarget.files[0];
             var reader = new FileReader();
-            reader.readAsDataURL(file);
+    
             reader.onload = function(e) {
-                $('#picture')[0].src = this.result;
                 self.cancelEditing();
-
-                self.uploadPicture(this.result.substring(this.result.lastIndexOf(";")+8));
+                self.imgScale(this.result,0.1,function(src){
+                     $('#picture')[0].src = src;
+                    self.uploadPicture(src.substring(src.lastIndexOf(";")+8));
+                })
             }
+           reader.readAsDataURL(file);
+        },
+        imgScale: function  (src,scale,callback) {
+            if (!src) return callback(false)
+            var _canvas = document.getElementById('g_canvas'),
+                 type=src.substring(0,src.lastIndexOf(";")).replace("data:","");
+            var tImg = new Image();
+            tImg.onload = function(){
+                var _context = _canvas.getContext('2d');
+                _canvas.width = tImg.naturalWidth;
+                _canvas.height = tImg.naturalHeight;
+                _context.drawImage(tImg,0,0);
+                src = _canvas.toDataURL(type,scale);
+               callback(src);
+            };
+            tImg.src = src
         },
         uploadPicture:function(data){
             self.showLoading();
@@ -346,6 +363,7 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
             self.setHeader();
             self.user=self.getCurrentUser();
             self.GetData();
+           $('body').append($('<canvas id="g_canvas" style="display: none;"></canvas>'));
 
         },
         //设置标题
