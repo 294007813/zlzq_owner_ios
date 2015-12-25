@@ -1,4 +1,4 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupSelect","text!TplHouseUpload","cImageZoom"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,UIGroupSelect,TplHouseUpload,cImageZoom) {
+define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupSelect","text!TplHouseUpload","cImageZoom","MegaPixImage"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,UIGroupSelect,TplHouseUpload,cImageZoom,MegaPixImage) {
     var self;
     var View = BaseView.extend({
         //url: "http://zlzq.easybird.cn",
@@ -75,44 +75,25 @@ define(['BaseView', "cUIInputClear","cUIImageSlider", "Model", "Store","UIGroupS
 			var self=this,
                 file = e.currentTarget.files[0],
 				target=e.currentTarget;
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function(e) {
-        
-			
-              self.imgScale(this.result,0.1,function(src){
-                   
-                     $(".pic-block").prepend('<label class="pic-label icon" ><label class="delico new" ></label> <img class="housepic" src="data:image/jpeg;base64,' + src.substring(src.lastIndexOf(";")+8) + '"/> </label>');
 
-                     self.hidePicType();
-                     target.parentNode.appendChild(target.cloneNode());
-                     target.parentNode.removeChild(target);
-                    $(".housepic").fancyzoom();
-                    $(".fullimg").fancyzoom();
-                })
+             var mpImg = new MegaPixImage(file),
+                 _canvas=document.getElementById("g_canvas");
+             var _max = 320;
+             mpImg.render(_canvas, {
+                    maxHeight: _max
+             },function(){
+                var  src = _canvas.toDataURL("image/jpeg");
+                $(".pic-block").prepend('<label class="pic-label icon" ><label class="delico new" ></label> <img class="housepic" src="' + src + '"/> </label>');
+                 self.hidePicType();
+                         target.parentNode.appendChild(target.cloneNode());
+                         target.parentNode.removeChild(target);
+                        $(".housepic").fancyzoom();
+                        $(".fullimg").fancyzoom();
 
-		  
-            }
-			
-			
+                 });
           
         },
 
-         imgScale: function  (src,scale,callback) {
-            if (!src) return callback(false)
-            var _canvas = document.getElementById('g_canvas'),
-                 type=src.substring(0,src.lastIndexOf(";")).replace("data:","");
-            var tImg = new Image();
-            tImg.onload = function(){
-                var _context = _canvas.getContext('2d');
-                _canvas.width = tImg.naturalWidth;
-                _canvas.height = tImg.naturalHeight;
-                _context.drawImage(tImg,0,0);
-                src = _canvas.toDataURL(type,scale);
-               callback(src);
-            };
-            tImg.src = src
-        },
         toCancel: function(){
             self.$el.find(".cd-popup").removeClass("is-visible");
         },

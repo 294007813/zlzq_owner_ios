@@ -1,4 +1,4 @@
-define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupSelect","text!TplPersonal"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,UIGroupSelect,tplPersonal) {
+define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupSelect","text!TplPersonal","MegaPixImage"], function (BaseView, cUIInputClear,cUIImageSlider, Model, Store,UIGroupSelect,tplPersonal,MegaPixImage) {
     var self;
     var View = BaseView.extend({
         ViewName: 'personal.',
@@ -38,32 +38,22 @@ define(['BaseView', "cUIInputClear","cUIImageSlider" ,"Model", "Store","UIGroupS
         readFile: function (e) {
             var self=this,
                 file = e.currentTarget.files[0];
-            var reader = new FileReader();
-    
-            reader.onload = function(e) {
+
                 self.cancelEditing();
-                self.imgScale(this.result,0.1,function(src){
+
+            var mpImg = new MegaPixImage(file),
+                _canvas=document.getElementById("g_canvas");
+            var _max = 320;
+            mpImg.render(_canvas, {
+                    maxHeight: _max
+                },function(){
+                    var  src = _canvas.toDataURL("image/jpeg");
                      $('#picture')[0].src = src;
                     self.uploadPicture(src.substring(src.lastIndexOf(";")+8));
-                })
-            }
-           reader.readAsDataURL(file);
+            })
+
         },
-        imgScale: function  (src,scale,callback) {
-            if (!src) return callback(false)
-            var _canvas = document.getElementById('g_canvas'),
-                 type=src.substring(0,src.lastIndexOf(";")).replace("data:","");
-            var tImg = new Image();
-            tImg.onload = function(){
-                var _context = _canvas.getContext('2d');
-                _canvas.width = tImg.naturalWidth;
-                _canvas.height = tImg.naturalHeight;
-                _context.drawImage(tImg,0,0);
-                src = _canvas.toDataURL(type,scale);
-               callback(src);
-            };
-            tImg.src = src
-        },
+
         uploadPicture:function(data){
             self.showLoading();
             var url = Lizard.host + Lizard.apiUrl + "owners/"+self.user.actor_id+"/save_avatar?auth_token="+ self.user.authentication_token;

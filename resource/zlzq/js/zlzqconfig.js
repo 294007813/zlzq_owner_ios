@@ -13,6 +13,7 @@
 			'cRange': baseUrl + 'common/tools/cRange', //
 			'UITab':baseUrl + 'common/utils/ui.tab',
 			'cImageZoom':baseUrl + 'common/tools/cImageZoom',
+			'MegaPixImage':baseUrl + 'common/tools/MegaPixImage',
 			//模版
 			'TplSchedule': baseUrl + 'templates/schedule.html',
 			'TplHouse': baseUrl + 'templates/house.html',
@@ -44,6 +45,7 @@
 			'TplGetreward': baseUrl + 'templates/getinvitereward.html',
 			'TplSendinvite': baseUrl + 'templates/sendinvitecode.html',
 			'TplVisitlist': baseUrl + 'templates/visitlist.html',
+
 	    }
 	};
 	config.urlArgs = "v=1";
